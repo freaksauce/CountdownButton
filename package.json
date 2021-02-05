@@ -1,7 +1,7 @@
 {
   "name": "countdown-button",
   "version": "1.0.0",
-  "description": "",
+  "description": "A Button that includes a countdown to an upcoming event such as loading the next video in a media player",
   "keywords": [],
   "main": "src/index.js",
   "dependencies": {
