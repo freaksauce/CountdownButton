@@ -1,7 +1,7 @@
 {
-  "name": "countdown-button",
+  "name": "disney-style-countdown-button",
   "version": "1.0.0",
-  "description": "Similar to Disney+",
+  "description": "",
   "keywords": [],
   "main": "src/index.js",
   "dependencies": {

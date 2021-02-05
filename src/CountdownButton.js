@@ -2,9 +2,11 @@ import React, { useEffect, useState } from "react";
 
 const buttonStyles = {
   display: "flex",
-  border: "1px solid black",
+  border: "2px solid black",
+  borderRadius: "5px",
   backgroundColor: "white",
-  padding: "1rem"
+  padding: "1rem",
+  fontWeight: "600"
 };
 
 const countdownValueStyle = {
