@@ -10,31 +10,50 @@ const buttonStyles = {
 };
 
 const countdownValueStyle = {
-  minWidth: "2rem"
+  minWidth: "2rem",
+  opactiy: '1'
 };
+const countdownValueAnimate = {
+  minWidth: "2rem",
+  transitionProperty: 'opacity, transform',
+  transitionDuration: '.2s, .2s',
+  transitionTimingFunction: 'ease-out',
+  transform: 'translateX(-10px)',
+  opacity: '0'
+}
 
 const CountdownButton = ({ onComplete, onClick }) => {
-  const [seconds, setSeconds] = useState(15);
+  const [seconds, setSeconds] = useState(5);
   const [actionClicked, setActionClicked] = useState(false);
+  const [animating, setAnimating] = useState(false)
 
   useEffect(() => {
     const interval = setInterval(() => {
       setSeconds((seconds) => {
-        if (seconds > 0) {
+        if (!animating) {
+          setAnimating (false)
+          setTimeout(() => {
+            setAnimating(true)
+          }, 700)
+        }
+        if (seconds > 1) {
           return seconds - 1;
         } else {
           clearInterval(interval);
-          setSeconds(0);
           onComplete();
         }
       });
     }, 1000);
+    setTimeout(() => {
+      setAnimating(true)
+    }, 700)
     if (actionClicked === true) clearInterval(interval);
     return () => clearInterval(interval);
   }, [onComplete, actionClicked]);
 
   return (
     <>
+      <p>animating: {animating === true ? 'yes' : 'no'}</p>
       <button
         style={buttonStyles}
         type="button"
@@ -44,7 +63,11 @@ const CountdownButton = ({ onComplete, onClick }) => {
         }}
       >
         Next episode starting in
-        <span style={countdownValueStyle}>{seconds}</span>
+        <span
+          style={animating === true ? countdownValueAnimate : countdownValueStyle}
+        >
+          {seconds}
+        </span>
       </button>
     </>
   );
