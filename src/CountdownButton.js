@@ -1,29 +1,8 @@
 import React, { useEffect, useState } from "react";
-
-const buttonStyles = {
-  display: "flex",
-  border: "2px solid black",
-  borderRadius: "5px",
-  backgroundColor: "white",
-  padding: "1rem",
-  fontWeight: "600"
-};
-
-const countdownValueStyle = {
-  minWidth: "2rem",
-  opactiy: '1'
-};
-const countdownValueAnimate = {
-  minWidth: "2rem",
-  transitionProperty: 'opacity, transform',
-  transitionDuration: '.2s, .2s',
-  transitionTimingFunction: 'ease-out',
-  transform: 'translateX(-10px)',
-  opacity: '0'
-}
+import './styles.css'
 
 const CountdownButton = ({ onComplete, onClick }) => {
-  const [seconds, setSeconds] = useState(5);
+  const [seconds, setSeconds] = useState(10);
   const [actionClicked, setActionClicked] = useState(false);
   const [animating, setAnimating] = useState(false)
 
@@ -51,9 +30,8 @@ const CountdownButton = ({ onComplete, onClick }) => {
 
   return (
     <>
-      <p>animating: {animating === true ? 'yes' : 'no'}</p>
       <button
-        style={buttonStyles}
+        className="countdownButton"
         type="button"
         onClick={() => {
           onClick();
@@ -62,7 +40,7 @@ const CountdownButton = ({ onComplete, onClick }) => {
       >
         Next episode starting in
         <span
-          style={animating === true ? countdownValueAnimate : countdownValueStyle}
+          className={animating === true ? 'countdownButton--animate' : 'countdownButton--value'}
         >
           {seconds}
         </span>

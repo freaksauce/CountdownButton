@@ -1,4 +1,32 @@
-.App {
-  font-family: sans-serif;
-  text-align: center;
+.countdownButton {
+  display: flex;
+  border: 2px solid black;
+  border-radius: 5px;
+  background-color: white;
+  padding: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.countdownButton:hover {
+  background-color: #f2f2f2;
+}
+.countdownButton:active {
+  background-color: #ccc;
+}
+.countdownButton:focus {
+  outline: none;
+}
+.countdownButton--value {
+  min-width: 2rem;
+  opacity: 1;
+}
+
+.countdownButton--animate {
+  min-width: 2rem;
+  transition-property: opacity, transform;
+  transition-duration: .2s, .2s;
+  transition-timing-function: ease-out;
+  transform: translateX(-10px);
+  opacity: 0;
 }
