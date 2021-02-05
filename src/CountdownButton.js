@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import { func, string } from 'prop-types'
 import './styles.css'
 
-const CountdownButton = ({ onComplete, onClick }) => {
+const CountdownButton = ({ children, onComplete, onClick }) => {
   const [seconds, setSeconds] = useState(10);
   const [actionClicked, setActionClicked] = useState(false);
   const [animating, setAnimating] = useState(false)
@@ -38,15 +39,23 @@ const CountdownButton = ({ onComplete, onClick }) => {
           setActionClicked(true);
         }}
       >
-        Next episode starting in
-        <span
-          className={animating === true ? 'countdownButton--animate' : 'countdownButton--value'}
-        >
-          {seconds}
-        </span>
+        <div class="countdownButton--content">
+          {children}
+          <span
+            className={animating === true ? 'countdownButton--animate' : 'countdownButton--value'}
+          >
+            {seconds}
+          </span>
+        </div>
       </button>
     </>
   );
 };
+
+CountdownButton.propTypes = {
+  children: string.isRequired,
+  onClick: func.isRequired,
+  onComplete: func.isRequired
+}
 
 export default CountdownButton;
