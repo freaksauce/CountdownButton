@@ -30,13 +30,11 @@ const CountdownButton = ({ onComplete, onClick }) => {
   useEffect(() => {
     const interval = setInterval(() => {
       setSeconds((seconds) => {
-        if (!animating) {
-          setAnimating (false)
+        setAnimating (false)
+        if (seconds > 1) {
           setTimeout(() => {
             setAnimating(true)
           }, 700)
-        }
-        if (seconds > 1) {
           return seconds - 1;
         } else {
           clearInterval(interval);
