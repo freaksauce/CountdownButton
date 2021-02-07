@@ -19,7 +19,9 @@
 }
 .countdownButton--value {
   min-width: 2rem;
-  opacity: 1;
+  /* opacity: 1; */
+  animation-name: slidein;
+  animation-duration: .2s;
 }
 .countdownButton--content {
   display: flex;
@@ -33,4 +35,15 @@
   transition-timing-function: ease-out;
   transform: translateY(-7px);
   opacity: 0;
+}
+
+@keyframes slidein {
+  from {
+    transform: translateY(7px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }

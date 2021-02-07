@@ -3,7 +3,7 @@ import { func, string } from 'prop-types'
 import './styles.css'
 
 const CountdownButton = ({ children, onComplete, onClick }) => {
-  const [seconds, setSeconds] = useState(10);
+  const [seconds, setSeconds] = useState(15);
   const [actionClicked, setActionClicked] = useState(false);
   const [animating, setAnimating] = useState(false)
 
