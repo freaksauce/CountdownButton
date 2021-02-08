@@ -19,7 +19,6 @@
 }
 .countdownButton--value {
   min-width: 2rem;
-  /* opacity: 1; */
   animation-name: slidein;
   animation-duration: .2s;
 }
@@ -30,11 +29,8 @@
 
 .countdownButton--animate {
   min-width: 2rem;
-  transition-property: opacity, transform;
-  transition-duration: .2s, .2s;
-  transition-timing-function: ease-out;
-  transform: translateY(-7px);
-  opacity: 0;
+  animation-name: slideout;
+  animation-duration: .3s;
 }
 
 @keyframes slidein {
@@ -45,5 +41,16 @@
   to {
     transform: translateY(0);
     opacity: 1;
+  }
+}
+
+@keyframes slideout {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-7px);
+    opacity: 0;
   }
 }
