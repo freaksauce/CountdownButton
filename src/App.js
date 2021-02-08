@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import 'normalize.css'
 import "./styles.css";
-import CountdownButton from "./CountdownButton";
+import { CountdownButton } from "./components/";
 
 export default function App() {
   const [show, setShow] = useState(true)

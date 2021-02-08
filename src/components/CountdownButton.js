@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { func, string } from 'prop-types'
-import './styles.css'
+import styles from './CountdownButtonStyles.module.css'
 
 const CountdownButton = ({ children, onComplete, onClick }) => {
   const [seconds, setSeconds] = useState(15);
@@ -32,17 +32,17 @@ const CountdownButton = ({ children, onComplete, onClick }) => {
   return (
     <>
       <button
-        className="countdownButton"
+        className={styles.countdownButton}
         type="button"
         onClick={() => {
           onClick();
           setActionClicked(true);
         }}
       >
-        <div class="countdownButton--content">
+        <div class={styles['countdownButton--content']}>
           {children}
           <span
-            className={animating === true ? 'countdownButton--animate' : 'countdownButton--value'}
+            className={animating === true ? styles['countdownButton--animate'] : styles['countdownButton--value']}
           >
             {seconds}
           </span>

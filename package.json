@@ -1,9 +1,10 @@
 {
-  "name": "countdown-button",
-  "version": "1.0.0",
+  "name": "CountdownButton",
+  "version": "0.1.0",
+  "private": false,
   "description": "A Button that includes a countdown to an upcoming event such as loading the next video in a media player",
   "keywords": [],
-  "main": "src/index.js",
+  "main": "lib/",
   "dependencies": {
     "normalize.css": "^8.0.1",
     "prop-types": "^15.7.2",
@@ -12,18 +13,30 @@
     "react-scripts": "4.0.0"
   },
   "devDependencies": {
+    "@babel/cli": "^7.12.13",
+    "@babel/preset-react": "^7.12.13",
     "typescript": "4.1.3"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "publish:npm": "rm -rf lib && mkdir lib && babel src/components/ -d lib --copy-files"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
   },
   "browserslist": [
     ">0.2%",
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "babel": {
+    "presets": [
+      "@babel/preset-react"
+    ]
+  },
+  "files": ["/lib"]
 }
