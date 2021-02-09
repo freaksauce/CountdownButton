@@ -1,38 +1,11 @@
 import { useEffect, useState } from "react";
 import { func, number, object, string } from 'prop-types'
-import styled, { keyframes } from 'styled-components'
+import { css, keyframes } from '@emotion/css'
 
 const CountdownButton = ({ children, onComplete, onClick, totalSeconds, theme }) => {
   const [seconds, setSeconds] = useState(totalSeconds);
   const [actionClicked, setActionClicked] = useState(false);
   const [animating, setAnimating] = useState(false)
-
-  const StyledCountdownButton = styled.button`
-    display: flex;
-    border: 2px solid ${theme.borderColor};
-    border-radius: 5px;
-    background-color: ${theme.bgColor};
-    padding: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-
-    &:hover {
-      background-color: ${theme.bgHover};
-    }
-
-    &:active {
-      background-color: ${theme.active};
-    }
-    
-    &:focus {
-      outline: none;
-    }
-  `
-
-  const StyledCountdownButtonContent = styled.div`
-    display: flex;
-    align-items: center;
-  `
 
   const slidein = keyframes`
     0% {
@@ -55,12 +28,6 @@ const CountdownButton = ({ children, onComplete, onClick, totalSeconds, theme })
     }
   `
 
-  const StyledCountdownButtonValue = styled.span`
-    min-width: 2rem;
-    animation-name: ${animating ? slideout : slidein};
-    animation-duration: ${animating ? '.3s' : '.2s'};
-  `
-
   useEffect(() => {
     const interval = setInterval(() => {
       setSeconds((seconds) => {
@@ -81,22 +48,53 @@ const CountdownButton = ({ children, onComplete, onClick, totalSeconds, theme })
     }, 700)
     if (actionClicked === true) clearInterval(interval);
     return () => clearInterval(interval);
-  }, []);
+  }, [actionClicked, onComplete]);
 
   return (
     <>
-      <StyledCountdownButton
+      <button
+        className={css`
+          display: flex;
+          border: 2px solid ${theme.borderColor};
+          border-radius: 5px;
+          background-color: ${theme.bgColor};
+          padding: 1rem;
+          font-weight: 600;
+          cursor: pointer;
+      
+          &:hover {
+            background-color: ${theme.bgHover};
+          }
+      
+          &:active {
+            background-color: ${theme.active};
+          }
+          
+          &:focus {
+            outline: none;
+          }
+        `}
         type="button"
         onClick={() => {
           onClick();
           setActionClicked(true);
         }}
       >
-        <StyledCountdownButtonContent>
+        <div className={css`
+          display: flex;
+          align-items: center;
+        `}>
           {children}
-          <StyledCountdownButtonValue>{seconds}</StyledCountdownButtonValue>
-        </StyledCountdownButtonContent>
-      </StyledCountdownButton>
+          <span className={css`
+            min-width: 2rem;
+            animation-name: ${animating ? slideout : slidein};
+            animation-duration: ${animating ? '.3s' : '.2s'};
+          `}
+          >
+            {seconds}
+          </span>
+        </div>
+      </button>
     </>
   );
 };
