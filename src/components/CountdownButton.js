@@ -81,7 +81,7 @@ const CountdownButton = ({ children, onComplete, onClick, totalSeconds, theme })
     }, 700)
     if (actionClicked === true) clearInterval(interval);
     return () => clearInterval(interval);
-  }, [onComplete, actionClicked]);
+  }, []);
 
   return (
     <>
