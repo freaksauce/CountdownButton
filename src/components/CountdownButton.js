@@ -1,6 +1,11 @@
 import { useEffect, useState } from "react";
 import { func, string } from 'prop-types'
-import styles from './CountdownButtonStyles.module.css'
+import {
+  StyledCountdownButton,
+  StyledCountdownButtonContent,
+  StyledCountdownButtonValue,
+  StyledCountdownButtonAnimate
+} from './CountdownButtonStyles'
 
 const CountdownButton = ({ children, onComplete, onClick }) => {
   const [seconds, setSeconds] = useState(15);
@@ -31,23 +36,22 @@ const CountdownButton = ({ children, onComplete, onClick }) => {
 
   return (
     <>
-      <button
-        className={styles.countdownButton}
+      <StyledCountdownButton
         type="button"
         onClick={() => {
           onClick();
           setActionClicked(true);
         }}
       >
-        <div class={styles['countdownButton--content']}>
+        <StyledCountdownButtonContent>
           {children}
-          <span
-            className={animating === true ? styles['countdownButton--animate'] : styles['countdownButton--value']}
-          >
-            {seconds}
-          </span>
-        </div>
-      </button>
+          {animating ?
+            <StyledCountdownButtonAnimate>{seconds}</StyledCountdownButtonAnimate>
+          :
+            <StyledCountdownButtonValue>{seconds}</StyledCountdownButtonValue>
+          }
+        </StyledCountdownButtonContent>
+      </StyledCountdownButton>
     </>
   );
 };
