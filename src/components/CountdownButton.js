@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { func, object, string } from 'prop-types'
+import { func, number, object, string } from 'prop-types'
 import styled, { keyframes } from 'styled-components'
 
-const CountdownButton = ({ children, className, onComplete, onClick, theme }) => {
-  const [seconds, setSeconds] = useState(15);
+const CountdownButton = ({ children, onComplete, onClick, totalSeconds, theme }) => {
+  const [seconds, setSeconds] = useState(totalSeconds);
   const [actionClicked, setActionClicked] = useState(false);
   const [animating, setAnimating] = useState(false)
 
@@ -86,7 +86,6 @@ const CountdownButton = ({ children, className, onComplete, onClick, theme }) =>
   return (
     <>
       <StyledCountdownButton
-        className={className}
         type="button"
         onClick={() => {
           onClick();
@@ -103,7 +102,7 @@ const CountdownButton = ({ children, className, onComplete, onClick, theme }) =>
 };
 
 CountdownButton.defaultProps = {
-  className: '',
+  totalSeconds: 15,
   theme: {
     bgActive: '#ccc',
     bgColor: 'white',
@@ -113,9 +112,9 @@ CountdownButton.defaultProps = {
 }
 CountdownButton.propTypes = {
   children: string.isRequired,
-  className: string,
   onClick: func.isRequired,
   onComplete: func.isRequired,
+  totalSeconds: number,
   theme: object
 }
 
