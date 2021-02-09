@@ -103,7 +103,7 @@ CountdownButton.defaultProps = {
   totalSeconds: 15,
   theme: {
     bgActive: '#ccc',
-    bgColor: 'white',
+    bgColor: '#fff',
     bgHover: '#f2f2f2',
     borderColor: '#666'
   }
