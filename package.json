@@ -4,7 +4,7 @@
   "private": false,
   "description": "A Button that includes a countdown to an upcoming event such as loading the next video in a media player",
   "keywords": [],
-  "main": "lib/",
+  "main": "lib/index.js",
   "dependencies": {
     "normalize.css": "^8.0.1",
     "prop-types": "^15.7.2",

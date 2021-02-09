@@ -5,15 +5,25 @@ import { CountdownButton } from "./components/";
 
 export default function App() {
   const [show, setShow] = useState(true)
+  const [isComplete, setIsComplete] = useState(false)
+  const [isClicked, setIsClicked] = useState(false)
   return (
     <div className="App">
       <main>
         <div className="">
           <h1>Countdown button</h1>
+          {isComplete && <p>onComplete triggered</p>}
+          {isClicked && <p>onClick triggered</p>}
           {show &&
             <CountdownButton
-              onComplete={() => setShow(false)}
-              onClick={() => setShow(false)}
+              onComplete={() => { 
+                setShow(false)
+                setIsComplete(true)
+              }}
+              onClick={() => {
+                setShow(false)
+                setIsClicked(true)
+              }}
             >
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
                 <path fill="none" d="M0 0h24v24H0z"/>
@@ -23,9 +33,21 @@ export default function App() {
             </CountdownButton>
           }
           {!show &&
-            <button type="button" onClick={() => setShow(true)}>Reset</button>
+            <button
+              type="button"
+              onClick={() => {
+                setShow(true)
+                setIsComplete(false)
+                setIsClicked(false)
+              }}
+            >
+              Reset
+            </button>
           }
-          <p>Repo for this component can be found here <a href="https://github.com/freaksauce/CountdownButton">https://github.com/freaksauce/CountdownButton</a>, it does include an onClick and onComplete method in case you actually want to use it in a media app.</p>
+          <p>
+            Repo for this component can be found here <a href="https://github.com/freaksauce/CountdownButton">https://github.com/freaksauce/CountdownButton</a>,
+            it does include an onClick and onComplete method in case you actually want to use it in a media app.
+          </p>
         </div>
       </main>
     </div>
