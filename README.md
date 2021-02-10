@@ -21,5 +21,3 @@ theme: {
 ```
 
 Demo here https://wonderful-darwin-823373.netlify.app/
-
-![CountdownButton example][https://imgur.com/a/zQQBceR]
