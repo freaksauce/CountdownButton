@@ -21,3 +21,5 @@ theme: {
 ```
 
 Demo here https://wonderful-darwin-823373.netlify.app/
+
+<img src="./public/CountdownButton.png" height="90" alt="countdown button example" />
