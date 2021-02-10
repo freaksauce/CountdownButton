@@ -49,6 +49,18 @@ export default function App() {
             Repo for this component can be found here <a href="https://github.com/freaksauce/CountdownButton">https://github.com/freaksauce/CountdownButton</a>,
             it does include an onClick and onComplete method in case you actually want to use it in a media app.
           </p>
+          <h2>Updated</h2>
+          <p>Props have been added to allow for custom timer value (`totalSeconds`) and to update colours with the `theme` prop.</p>
+          <CountdownButton
+            totalSeconds={30}
+            theme={{
+              bgColor: 'lime',
+              borderColor: 'limegreen',
+              bgHover: 'limeGreen'
+            }}
+          >
+            Next episode starting in
+          </CountdownButton>
         </div>
       </main>
     </div>
