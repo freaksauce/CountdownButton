@@ -58,6 +58,8 @@ export default function App() {
               borderColor: 'limegreen',
               bgHover: 'limeGreen'
             }}
+            onClick={() => console.log('button 2 clicked')}
+            onComplete={() => console.log('button 2 complete')}
           >
             Next episode starting in
           </CountdownButton>
